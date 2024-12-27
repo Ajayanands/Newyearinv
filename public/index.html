@@ -3,22 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Year Invite</title>
+  <title>New Year Party Ticket</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Welcome to the New Year Invite</h1>
+
+  <h1>New Year Party Ticket Generator</h1>
+
   <form id="ticket-form">
-    <label for="name">Name:</label>
-    <input type="text" id="name" required>
-
-    <label for="mobile">Mobile Number:</label>
-    <input type="tel" id="mobile" pattern="[0-9]{10}" required>
-
+    <input type="text" id="name" placeholder="Enter your Name" required>
+    <input type="text" id="mobile" placeholder="Enter your Mobile Number" required>
     <button type="submit">Generate Ticket</button>
   </form>
 
   <div id="ticket-result"></div>
+
+  <!-- Button to view the list of all tickets -->
+  <button id="view-list-btn">View List of Tickets</button>
+
+  <!-- Container to display the list of all tickets -->
+  <div id="ticket-list"></div>
+
   <script src="script.js"></script>
 </body>
 </html>

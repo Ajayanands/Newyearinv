@@ -80,3 +80,30 @@ function generateTicketImage(ticket) {
   link.download = `${ticket.ticketNumber}_ticket.png`;
   link.click();
 }
+
+// Fetch and display the list of tickets when the "View List" button is clicked
+document.getElementById('view-list-btn').addEventListener('click', async () => {
+  try {
+    const response = await fetch('/view-tickets');
+    const data = await response.json();
+
+    if (response.status === 200) {
+      const tickets = data.tickets;
+      const listContainer = document.getElementById('ticket-list');
+      listContainer.innerHTML = '<h2>All Generated Tickets</h2>';
+
+      tickets.forEach(ticket => {
+        const ticketItem = document.createElement('div');
+        ticketItem.classList.add('ticket-item');
+        ticketItem.innerHTML = `
+          <p>Name: ${ticket.name}</p>
+          <p>Mobile: ${ticket.mobile}</p>
+          <p>Ticket Number: ${ticket.ticketNumber}</p>
+        `;
+        listContainer.appendChild(ticketItem);
+      });
+    }
+  } catch (error) {
+    alert('Error fetching the ticket list!');
+  }
+});

@@ -1,57 +1,47 @@
 const express = require('express');
-const path = require('path');
-const fs = require('fs');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = 3000;
+
+// Store tickets in memory (replace with a database in production)
+let tickets = [];
 
 // Middleware to serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Body parser middleware to handle form submission
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 app.use(express.json());
 
-// Data storage for users (in-memory, use a database for persistence)
-let users = [];
-let ticketNumber = 1;  // Start generating tickets from 1
+// Serve the main page
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
 
-// Route to handle ticket generation
+// Generate ticket endpoint
 app.post('/generate-ticket', (req, res) => {
   const { name, mobile } = req.body;
 
-  // Check if the mobile number already exists in the system
-  const existingUser = users.find(user => user.mobile === mobile);
-  if (existingUser) {
-    return res.status(400).json({ message: 'This mobile number already has a ticket.' });
+  // Check if the mobile number already exists
+  if (tickets.find(ticket => ticket.mobile === mobile)) {
+    return res.status(400).json({ message: 'This mobile number already has a ticket!' });
   }
 
-  // Generate the ticket number with leading zeros (e.g., 001, 002, ..., 999)
-  const formattedTicketNumber = ticketNumber.toString().padStart(3, '0');
+  // Generate a new ticket number
+  const ticketNumber = ('00' + (tickets.length + 1)).slice(-3); // Generate numbers like 001, 002, etc.
 
-  // Generate the ticket and store the user data
-  const newTicket = {
-    ticketNumber: formattedTicketNumber,
-    name,
-    mobile
-  };
-  users.push(newTicket);
+  // Create the ticket object
+  const ticket = { name, mobile, ticketNumber };
 
-  // Increment ticket number for the next user
-  ticketNumber++;
+  // Store the ticket
+  tickets.push(ticket);
 
-  // Return the ticket information
-  res.status(200).json({
-    message: 'Ticket generated successfully!',
-    ticket: newTicket
-  });
+  // Respond with the ticket details
+  res.status(200).json({ ticket });
 });
 
-// Endpoint to get all tickets (for admin or viewing)
-app.get('/tickets', (req, res) => {
-  res.json(users);
+// View tickets endpoint
+app.get('/view-tickets', (req, res) => {
+  res.status(200).json({ tickets });
 });
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
