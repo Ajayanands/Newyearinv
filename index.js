@@ -25,13 +25,19 @@ app.post('/generate-ticket', (req, res) => {
     return res.status(400).json({ message: 'This mobile number already has a ticket.' });
   }
 
+  // Generate the ticket number with leading zeros (e.g., 001, 002, ..., 999)
+  const formattedTicketNumber = ticketNumber.toString().padStart(3, '0');
+
   // Generate the ticket and store the user data
   const newTicket = {
-    ticketNumber: ticketNumber++,
+    ticketNumber: formattedTicketNumber,
     name,
     mobile
   };
   users.push(newTicket);
+
+  // Increment ticket number for the next user
+  ticketNumber++;
 
   // Return the ticket information
   res.status(200).json({
