@@ -1,104 +1,88 @@
-/* Body and layout styles */
 body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to top right, #ff007f, #ff7f00);
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
   text-align: center;
-  color: white;
-  padding: 20px;
 }
 
 h1 {
-  font-size: 3rem;
-  color: #fff;
-  font-family: 'Cursive', sans-serif;
-  margin-bottom: 40px;
+  color: #ff007f;
+  font-size: 36px;
+  margin-top: 50px;
 }
 
 form {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 15px;
-  margin: auto;
-  max-width: 400px;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  margin: 20px;
 }
 
-input, button {
-  padding: 15px;
-  font-size: 18px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  border: none;
-  width: 100%;
+input {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 button {
-  background-color: #00bcd4;
-  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ff007f;
+  color: white;
+  border: none;
   cursor: pointer;
-  font-weight: bold;
+  border-radius: 5px;
 }
 
 button:hover {
-  background-color: #ff8a00;
-}
-
-h2 {
-  font-size: 2rem;
-  color: #f8d000;
-  margin-top: 20px;
+  background-color: #ff3399;
 }
 
 #ticket-result {
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 20px;
   margin-top: 30px;
-  border-radius: 15px;
+  font-size: 18px;
 }
 
-#ticket-result p {
-  font-size: 1.2rem;
+#ticket-list {
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.ticket-item {
+  background: #ff007f;
+  padding: 10px;
   margin: 10px 0;
+  border-radius: 5px;
+  color: white;
 }
 
-/* Confetti animation */
-@keyframes confetti {
-  0% { transform: translateY(-100vh) rotate(0deg); }
-  100% { transform: translateY(100vh) rotate(360deg); }
+.ticket-item p {
+  margin: 5px 0;
 }
 
-.confetti {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  animation: confetti 3s infinite;
+#view-list-btn {
+  margin-top: 20px;
 }
 
-.confetti div {
-  position: absolute;
-  width: 10px;
-  height: 10px;
+/* Styling the ticket list table */
+.ticket-table {
+  width: 60%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.ticket-table th, .ticket-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.ticket-table th {
   background-color: #ff007f;
-  animation: confetti 5s infinite;
+  color: white;
 }
 
-/* Fireworks Effect */
-.fireworks {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  color: #ffea00;
-  animation: fireworks 1s infinite;
+.ticket-table tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-@keyframes fireworks {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+.ticket-table tr:hover {
+  background-color: #ddd;
 }
