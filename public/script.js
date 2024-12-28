@@ -22,7 +22,7 @@ document.getElementById('ticket-form').addEventListener('submit', async (e) => {
       
       document.getElementById('ticket-result').innerHTML = `
   <div style="
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.7); /* Translucent black background */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -46,6 +46,7 @@ document.getElementById('ticket-form').addEventListener('submit', async (e) => {
       font-size: 16px;
     ">Download Ticket</button>
   </div>
+
 `;
 
 
