@@ -48,30 +48,39 @@ document.getElementById('ticket-form').addEventListener('submit', async (e) => {
   }
 });
 
-// Function to generate and download ticket as PNG
 function generateTicketImage(ticket) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   canvas.width = 600;
   canvas.height = 300;
 
-  // Draw background
-  ctx.fillStyle = '#ff007f';
+  // Draw background with gradient
+  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  gradient.addColorStop(0, '#ff007f'); // Pink
+  gradient.addColorStop(1, '#ffcc00'); // Gold
+  ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Draw ticket details
+  // Draw header with festive theme
   ctx.fillStyle = '#fff';
-  ctx.font = '24px Arial';
-  ctx.fillText('New Year Party Ticket', 180, 50);
-  ctx.font = '18px Arial';
-  ctx.fillText(`Name: ${ticket.name}`, 30, 100);
-  ctx.fillText(`Mobile: ${ticket.mobile}`, 30, 130);
-  ctx.fillText(`Ticket Number: ${ticket.ticketNumber}`, 30, 160);
+  ctx.font = '28px Arial bold';
+  ctx.textAlign = 'center';
+  ctx.fillText('🎉 New Year Party 2024 🎉', canvas.width / 2, 50);
 
-  // Add a border
+  // Draw ticket details
+  ctx.font = '20px Arial';
+  ctx.fillText(`Name: ${ticket.name}`, canvas.width / 2, 120);
+  ctx.fillText(`Mobile: ${ticket.mobile}`, canvas.width / 2, 150);
+  ctx.fillText(`Ticket Number: ${ticket.ticketNumber}`, canvas.width / 2, 180);
+
+  // Add decorative border
   ctx.strokeStyle = '#fff';
   ctx.lineWidth = 5;
-  ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+  ctx.strokeRect(15, 15, canvas.width - 30, canvas.height - 30);
+
+  // Add footer message
+  ctx.font = '16px Arial italic';
+  ctx.fillText('Thank you for celebrating with us!', canvas.width / 2, 250);
 
   // Convert canvas to PNG and download
   const dataURL = canvas.toDataURL('image/png');
@@ -80,6 +89,7 @@ function generateTicketImage(ticket) {
   link.download = `${ticket.ticketNumber}_ticket.png`;
   link.click();
 }
+
 
 // Fetch and display the list of tickets when the "View List" button is clicked
 document.getElementById('view-list-btn').addEventListener('click', async () => {
