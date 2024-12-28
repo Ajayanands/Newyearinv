@@ -91,6 +91,7 @@ function generateTicketImage(ticket) {
 }
 
 
+
 // Fetch and display the list of tickets when the "View List" button is clicked
 document.getElementById('view-list-btn').addEventListener('click', async () => {
   try {
