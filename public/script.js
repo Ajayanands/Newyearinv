@@ -25,15 +25,17 @@ document.getElementById('ticket-form').addEventListener('submit', async (e) => {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
     margin: 20px auto;
     text-align: center;
+    color: #ffffff; /* Bright white text */
+    font-family: Arial, sans-serif; /* Optional for better readability */
   ">
-    <h2>Ticket Generated!</h2>
-    <p>Name: ${ticket.name}</p>
-    <p>Mobile: ${ticket.mobile}</p>
-    <p>Ticket Number: ${ticket.ticketNumber}</p>
+    <h2 style="color: #ffffff;">Ticket Generated!</h2>
+    <p style="color: #ffffff;">Name: ${ticket.name}</p>
+    <p style="color: #ffffff;">Mobile: ${ticket.mobile}</p>
+    <p style="color: #ffffff;">Ticket Number: ${ticket.ticketNumber}</p>
     <button id="download-btn" style="
       background-color: #007bff;
       color: white;
@@ -45,6 +47,7 @@ document.getElementById('ticket-form').addEventListener('submit', async (e) => {
     ">Download Ticket</button>
   </div>
 `;
+
 
       // Add event listener for download button
       document.getElementById('download-btn').addEventListener('click', () => {
