@@ -21,12 +21,30 @@ document.getElementById('ticket-form').addEventListener('submit', async (e) => {
       const ticket = data.ticket;
       
       document.getElementById('ticket-result').innerHTML = `
-        <h2>Ticket Generated!</h2>
-        <p>Name: ${ticket.name}</p>
-        <p>Mobile: ${ticket.mobile}</p>
-        <p>Ticket Number: ${ticket.ticketNumber}</p>
-        <button id="download-btn">Download Ticket</button>
-      `;
+  <div style="
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+  ">
+    <h2>Ticket Generated!</h2>
+    <p>Name: ${ticket.name}</p>
+    <p>Mobile: ${ticket.mobile}</p>
+    <p>Ticket Number: ${ticket.ticketNumber}</p>
+    <button id="download-btn" style="
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    ">Download Ticket</button>
+  </div>
+`;
 
       // Add event listener for download button
       document.getElementById('download-btn').addEventListener('click', () => {
