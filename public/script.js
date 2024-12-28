@@ -111,9 +111,8 @@ document.getElementById('view-list-btn').addEventListener('click', async () => {
       // Create table header
       const headerRow = document.createElement('tr');
       headerRow.innerHTML = `
-        <th style="border: 1px solid #000; padding: 10px; text-align: left;">Name</th>
-        <th style="border: 1px solid #000; padding: 10px; text-align: left;">Ticket Number</th>
-      `;
+        <th style="border: 1px solid #000; padding: 10px; text-align: center;">Name</th>
+        <th style="border: 1px solid #000; padding: 10px; text-align: center;">Ticket Number</th>`;
       table.appendChild(headerRow);
 
       // Add rows for each ticket
