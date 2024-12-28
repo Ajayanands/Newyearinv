@@ -25,7 +25,7 @@ document.getElementById('ticket-form').addEventListener('submit', async (e) => {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     width: 300px;
     margin: 20px auto;
     text-align: center;
