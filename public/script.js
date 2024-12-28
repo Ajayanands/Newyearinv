@@ -131,21 +131,22 @@ document.getElementById('view-list-btn').addEventListener('click', async () => {
       table.style.borderCollapse = 'collapse';
 
       // Create table header
-      const headerRow = document.createElement('tr');
-      headerRow.innerHTML = `
-        <th style="border: 1px solid #000; padding: 10px; text-align: center;">Name</th>
-        <th style="border: 1px solid #000; padding: 10px; text-align: center;">Ticket Number</th>`;
-      table.appendChild(headerRow);
+const headerRow = document.createElement('tr');
+headerRow.innerHTML = `
+  <th style="border: 1px solid #000; padding: 10px; text-align: center; color: #ffffff;">Name</th>
+  <th style="border: 1px solid #000; padding: 10px; text-align: center; color: #ffffff;">Ticket Number</th>`;
+table.appendChild(headerRow);
 
-      // Add rows for each ticket
-      tickets.forEach(ticket => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td style="border: 1px solid #000; padding: 10px;">${ticket.name}</td>
-          <td style="border: 1px solid #000; padding: 10px;">${ticket.ticketNumber}</td>
-        `;
-        table.appendChild(row);
-      });
+// Add rows for each ticket
+tickets.forEach(ticket => {
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td style="border: 1px solid #000; padding: 10px; color: #ffffff;">${ticket.name}</td>
+    <td style="border: 1px solid #000; padding: 10px; color: #ffffff;">${ticket.ticketNumber}</td>
+  `;
+  table.appendChild(row);
+});
+
 
       // Append the table to the container
       listContainer.appendChild(table);
