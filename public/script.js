@@ -108,7 +108,7 @@ function generateTicketImage(ticket) {
   const dataURL = canvas.toDataURL('image/png');
   const link = document.createElement('a');
   link.href = dataURL;
-  link.download = `${ticket.ticketNumber}_ticket.png`;
+  link.download = `${ticket.name}${ticket.ticketNumber}_ticket.png`;
   link.click();
 }
 
@@ -123,7 +123,8 @@ document.getElementById('view-list-btn').addEventListener('click', async () => {
     if (response.status === 200) {
       const tickets = data.tickets;
       const listContainer = document.getElementById('ticket-list');
-      listContainer.innerHTML = '<h2>All Generated Tickets</h2>';
+      listContainer.innerHTML = '<h2 style="color: #ffffff;">All Generated Tickets</h2>';
+
 
       // Create a table for displaying tickets
       const table = document.createElement('table');
