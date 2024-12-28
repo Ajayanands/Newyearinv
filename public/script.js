@@ -56,8 +56,8 @@ function generateTicketImage(ticket) {
 
   // Draw background with gradient
   const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  gradient.addColorStop(0, '#ff007f'); // Pink
-  gradient.addColorStop(1, '#ffcc00'); // Gold
+  gradient.addColorStop(0, '#FFD700'); // Pink
+  gradient.addColorStop(1, '#03055B'); // Gold
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
