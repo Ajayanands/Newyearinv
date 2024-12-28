@@ -20,9 +20,10 @@ app.post('/generate-ticket', (req, res) => {
 
   // Check if the mobile number already exists
   if (tickets.find(ticket => ticket.mobile === mobile)) {
-    return res.status(400).json({ message: 'This mobile number already has a ticket!' });
+    return res.status(400).json({
+      message: `<span style="color: #ffffff;">This mobile number already has a ticket!</span>`
+    });
   }
-
   // Generate a new ticket number
   const ticketNumber = ('00' + (tickets.length + 1)).slice(-3); // Generate numbers like 001, 002, etc.
 
