@@ -92,16 +92,31 @@ document.getElementById('view-list-btn').addEventListener('click', async () => {
       const listContainer = document.getElementById('ticket-list');
       listContainer.innerHTML = '<h2>All Generated Tickets</h2>';
 
+      // Create a table for displaying tickets
+      const table = document.createElement('table');
+      table.style.width = '100%';
+      table.style.borderCollapse = 'collapse';
+
+      // Create table header
+      const headerRow = document.createElement('tr');
+      headerRow.innerHTML = `
+        <th style="border: 1px solid #000; padding: 10px; text-align: left;">Name</th>
+        <th style="border: 1px solid #000; padding: 10px; text-align: left;">Ticket Number</th>
+      `;
+      table.appendChild(headerRow);
+
+      // Add rows for each ticket
       tickets.forEach(ticket => {
-        const ticketItem = document.createElement('div');
-        ticketItem.classList.add('ticket-item');
-        ticketItem.innerHTML = `
-          <p>Name: ${ticket.name}</p>
-          <p>Mobile: ${ticket.mobile}</p>
-          <p>Ticket Number: ${ticket.ticketNumber}</p>
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td style="border: 1px solid #000; padding: 10px;">${ticket.name}</td>
+          <td style="border: 1px solid #000; padding: 10px;">${ticket.ticketNumber}</td>
         `;
-        listContainer.appendChild(ticketItem);
+        table.appendChild(row);
       });
+
+      // Append the table to the container
+      listContainer.appendChild(table);
     }
   } catch (error) {
     alert('Error fetching the ticket list!');
